@@ -1,0 +1,33 @@
+<div class="row">
+  <ol class="breadcrumb">
+    <li><a routerLink="dashboard">Dashboard</a></li>
+    <li><a routerLink="etablissement/list">Etablissements</a></li>
+    <li class="active">{{title}}</li>
+  </ol>
+</div>
+<div class="row">
+  <div class="col-lg-12">
+    <h1 class="page-header">{{title}}</h1>
+  </div>
+</div>
+<div class="row">
+  <form name="new-etablissement-form">
+    <div class="col-lg-12 form-group">
+      <label for="Nom">Nom</label>
+      <input type="text" class="form-control" id="nom" name="nom" [(ngModel)]="etablissementInfo.nom" placeholder="Nom de l'établissement">
+    </div>
+    <div class="col-lg-12 form-group">
+      <label for="Ville">Ville</label>
+      <input type="text" class="form-control" id="ville" name="ville" [(ngModel)]="etablissementInfo.ville" placeholder="Ville">
+    </div>
+
+    <div class="clearfix"></div>
+    <br/>
+    <div class="col-lg-12">
+      <a class="btn btn-info" routerLink="/etablissement/list">Annuler</a>
+      <button class="btn btn-success" (click) = "addEtablissement()" *ngIf="action == 'add'">Sauvegarder l'établissement</button>
+      <button class="btn btn-success" (click) = "updateEtablissement()" *ngIf="action == 'edit'">Modifier l'établissement</button>
+    </div>
+  </form>
+</div>
+<!-- /.row -->

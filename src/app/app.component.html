@@ -1,3 +1,138 @@
-<h1>
-  {{title}}
-</h1>
+<div id="wrapper">
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">FCPE</a>
+    </div>
+    <!-- /.navbar-header -->
+
+    <ul class="nav navbar-top-links navbar-right">
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+          <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+        </a>
+        <ul class="dropdown-menu dropdown-user">
+          <li><a href="#"><i class="fa fa-user fa-fw"></i> Mon compte</a>
+          </li>
+          <li><a href="#"><i class="fa fa-gear fa-fw"></i> Préférences</a>
+          </li>
+          <li class="divider"></li>
+          <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Déconnexion</a>
+          </li>
+        </ul>
+        <!-- /.dropdown-user -->
+      </li>
+      <!-- /.dropdown -->
+    </ul>
+    <!-- /.navbar-top-links -->
+
+    <div class="navbar-default sidebar" role="navigation">
+      <div class="sidebar-nav navbar-collapse">
+        <ul class="nav" id="side-menu">
+          <li>
+            <a routerLink="dashboard"><i class="fa fa-home fa-fw"></i> Accueil</a>
+          </li>
+          <li>
+            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Campagnes<span class="fa arrow"></span></a>
+            <ul class="nav nav-second-level collapse">
+              <li>
+                <a routerLink="campagne/list">Liste des campagnes</a>
+              </li>
+              <li>
+                <a routerLink="campagne/add">Créer une campagne</a>
+              </li>
+            </ul>
+            <!-- /.nav-second-level -->
+          </li>
+          <li>
+            <a href="#"><i class="fa fa-edit fa-fw"></i> Formulaires<span class="fa arrow"></span></a>
+            <ul class="nav nav-second-level collapse">
+              <li>
+                <a routerLink="formulaire/list">Liste des formulaires</a>
+              </li>
+              <li>
+                <a routerLink="formulaires/add">Créer un formulaire</a>
+              </li>
+            </ul>
+            <!-- /.nav-second-level -->
+          </li>
+          <li>
+            <a href="#"><i class="fa fa-question-circle-o fa-fw"></i> Questions<span class="fa arrow"></span></a>
+            <ul class="nav nav-second-level collapse">
+              <li>
+                <a routerLink="question/list">Liste des questions</a>
+              </li>
+              <li>
+                <a routerLink="question/add">Créer une question</a>
+              </li>
+            </ul>
+            <!-- /.nav-second-level -->
+          </li>
+          <li>
+            <a href="#"><i class="fa fa-institution fa-fw"></i> Etablissements<span class="fa arrow"></span></a>
+            <ul class="nav nav-second-level collapse">
+              <li>
+                <a routerLink="etablissement/list">Liste des établissement</a>
+              </li>
+              <li>
+                <a routerLink="etablissement/add">Créer un établissement</a>
+              </li>
+            </ul>
+            <!-- /.nav-second-level -->
+          </li>
+          <li>
+            <a href="#"><i class="fa fa-sitemap fa-fw"></i> Classes<span class="fa arrow"></span></a>
+            <ul class="nav nav-second-level collapse">
+              <li>
+                <a routerLink="classe/list">Liste des classes</a>
+              </li>
+              <li>
+                <a routerLink="classe/add">Créer une classe</a>
+              </li>
+            </ul>
+            <!-- /.nav-second-level -->
+          </li>
+          <li>
+            <a href="#"><i class="fa fa-graduation-cap fa-fw"></i> Elèves<span class="fa arrow"></span></a>
+            <ul class="nav nav-second-level collapse">
+              <li>
+                <a routerLink="eleve/list">Liste des élèves</a>
+              </li>
+              <li>
+                <a routerLink="eleve/add">Créer un élève</a>
+              </li>
+            </ul>
+            <!-- /.nav-second-level -->
+          </li>
+          <li>
+            <a href="#"><i class="fa fa-user-secret fa-fw"></i> Administrateurs<span class="fa arrow"></span></a>
+            <ul class="nav nav-second-level collapse">
+              <li>
+                <a routerLink="administrateur/list">Liste des administrateurs</a>
+              </li>
+              <li>
+                <a routerLink="administrateur/add">Créer un administrateur</a>
+              </li>
+            </ul>
+            <!-- /.nav-second-level -->
+          </li>
+        </ul>
+      </div>
+      <!-- /.sidebar-collapse -->
+    </div>
+    <!-- /.navbar-static-side -->
+  </nav>
+
+  <div id="page-wrapper">
+    <router-outlet></router-outlet>
+  </div>
+
+</div>
+<!-- /#wrapper -->

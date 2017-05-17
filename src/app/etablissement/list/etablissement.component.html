@@ -1,0 +1,36 @@
+<table class="table table-striped" [mfData]="etablissements" #mf="mfDataTable" [mfRowsOnPage]="25">
+  <thead>
+  <tr>
+    <th style="width: 10%">
+      <mfDefaultSorter by="id">id</mfDefaultSorter>
+    </th>
+    <th style="width: 40%">
+      <mfDefaultSorter by="nom">nom</mfDefaultSorter>
+    </th>
+    <th style="width: 40%">
+      <mfDefaultSorter by="ville">ville</mfDefaultSorter>
+    </th>
+    <th style="width: 10%">
+      Actions
+    </th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let item of mf.data">
+    <td>{{item.id}}</td>
+    <td>{{item.nom}}</td>
+    <td>{{item.ville}}</td>
+    <td>
+      <a routerLink="/etablissement/edit/{{item.id}}" class="btn btn-sm btn-primary"><i class="fa fa-pencil"></i></a>
+      <button class="btn btn-sm btn-warning" (click) = "deleteEtablissement(item.id)"><i class="fa fa-trash-o"></i></button>
+    </td>
+  </tr>
+  </tbody>
+  <tfoot>
+  <tr>
+    <td colspan="4">
+      <mfBootstrapPaginator [rowsOnPageSet]="[5,10,25]"></mfBootstrapPaginator>
+    </td>
+  </tr>
+  </tfoot>
+</table>
