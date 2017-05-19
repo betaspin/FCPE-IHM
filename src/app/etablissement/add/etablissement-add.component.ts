@@ -19,7 +19,10 @@ export class EtablissementAddComponent implements OnInit {
   private etablissementInfo = {
     id: '',
     nom: '',
-    ville: ''
+    voie: '',
+    codePostal: '',
+    ville: '',
+    types: { optionCollege: true, optionLycee: true }
   };
 
   constructor(private etablissementAddService : EtablissementAddService, private router : Router, private route : ActivatedRoute) { }

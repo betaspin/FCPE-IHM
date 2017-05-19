@@ -20,8 +20,13 @@
     "@angular/platform-browser": "^2.3.1",
     "@angular/platform-browser-dynamic": "^2.3.1",
     "@angular/router": "^3.3.1",
+    "@types/angular": "^1.6.17",
+    "@types/jquery": "^2.0.45",
     "angular2-datatable": "^0.6.0",
+    "chart.js": "^2.5.0",
     "core-js": "^2.4.1",
+    "metismenu": "^2.7.0",
+    "ng2-charts": "^1.5.0",
     "rxjs": "^5.0.1",
     "ts-helpers": "^1.1.1",
     "zone.js": "^0.7.2"
@@ -43,5 +48,16 @@
     "ts-node": "1.2.1",
     "tslint": "^4.3.0",
     "typescript": "~2.0.3"
-  }
+  },
+  "description": "This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.28.3.",
+  "main": "karma.conf.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/betaspin/FCPE-IHM.git"
+  },
+  "author": "",
+  "bugs": {
+    "url": "https://github.com/betaspin/FCPE-IHM/issues"
+  },
+  "homepage": "https://github.com/betaspin/FCPE-IHM#readme"
 }

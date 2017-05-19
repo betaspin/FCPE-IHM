@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
 import { DataTableModule } from "angular2-datatable";
+import { FilterByPipe } from './filters/filter.pipe';
 
 import { AppComponent } from './app.component';
 
@@ -25,7 +26,8 @@ const appRoutes: Routes = [
     AppComponent,
     EtablissementComponent,
     DashboardComponent,
-    EtablissementAddComponent
+    EtablissementAddComponent,
+    FilterByPipe
   ],
   imports: [
     BrowserModule,
