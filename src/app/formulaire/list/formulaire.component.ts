@@ -1,43 +1,60 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
-import { EtablissementService } from './etablissement.service';
+import { FormulaireService } from './formulaire.service';
 import { FilterByPipe } from '../../filters/filter.pipe';
 const _ = require('lodash');
 /*declare var jQuery: any;
 let $ = jQuery;*/
 
 @Component({
-  selector: 'app-etablissement',
-  templateUrl: './etablissement.component.html',
-  styleUrls: ['./etablissement.component.css']
+  selector: 'app-formulaire',
+  templateUrl: './formulaire.component.html',
+  styleUrls: ['./formulaire.component.css']
 })
-export class EtablissementComponent implements OnInit {
+export class FormulaireComponent implements OnInit {
 
-  public etablissements = [];
+  public formulaires = [];
 
-  private etablissementInfo = {
+  private formulaireInfo = {
     id: '',
     nom: '',
-    ville: ''
+    statut: '',
+    etat: '',
+    serie: '',
+    niveau: ''
+
   };
 
-  protected searchName: string = "";
-  protected searchCity: string = "";
+  protected searchName: string = '';
 
-  constructor(private etablissementService : EtablissementService) {}
+  constructor(private formulaireService: FormulaireService) {
+    // TODO
+    this.formulairesBouchon();
+  }
 
   ngOnInit() {
-    this.etablissementService.getEtablissements().subscribe((etablissements) => {
-      this.etablissements = etablissements;
+    this.formulaireService.getFormulaires().subscribe((formulaires) => {
+      this.formulaires = formulaires;
     });
   }
 
-  public deleteEtablissement(idEtablissement) {
-    this.etablissementService.deleteEtablissement(idEtablissement).subscribe((etablissement) => {
-      _.remove(this.etablissements, function(_etablissement){
-        return etablissement.id === _etablissement.id;
-      })
+  public deleteFormulaire(idFormulaire) {
+    this.formulaireService.deleteFormulaire(idFormulaire).subscribe((formulaire) => {
+      _.remove(this.formulaires, function(_formulaire){
+        return formulaire.id === _formulaire.id;
+      });
     });
   }
+
+  private formulairesBouchon() {
+    this.formulaires = [
+      {    id: '1', nom: 'form1', statut: 'true', etat: 'false', niveau: '1ere', serie: 'S'},
+      {    id: '2', nom: 'form2', statut: 'false', etat: 'true', niveau: '2nd', serie: 'ES'},
+      {    id: '3', nom: 'Form3', statut: 'true', etat: 'true', niveau: 'Tle', serie: 'L'},
+      {    id: '3', nom: 'Form4fffffffffffffffffffffffffffffffffffddddddddddddddddddd', statut: 'false', etat: 'false', niveau: 'Terminale', serie: 'S'}
+    ];
+  }
+
+
 
   /*ngAfterViewInit(){
     $(document).ready(function() {
