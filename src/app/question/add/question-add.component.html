@@ -1,0 +1,77 @@
+<div class="row">
+  <ol class="breadcrumb">
+    <li><a routerLink="dashboard">Dashboard</a></li>
+    <li><a routerLink="etablissement/list">Questions</a></li>
+    <li class="active">{{title}}</li>
+  </ol>
+</div>
+<div class="row">
+  <div class="col-lg-12">
+    <h1 class="page-header">{{title}}</h1>
+  </div>
+</div>
+<div class="row">
+  <form name="new-question-form">
+    <div class="col-lg-12 form-group">
+      <label for="intitule">Intitulé</label>
+      <input type="text" class="form-control" id="intitule" name="intitule" [(ngModel)]="questionInfo.intitule" placeholder="Intitulé de la question">
+    </div>
+    <div class="form-group">
+      <label class="checkbox-inline">
+        <label>Obligatoire</label><br/>
+        <input name="obligatoire" type="radio" [(ngModel)]="questionInfo.obligatoire" [checked]="questionInfo.obligatoire==true" [value]="true" /> Oui
+        <input name="obligatoire" type="radio" [(ngModel)]="questionInfo.obligatoire" [checked]="questionInfo.obligatoire==false" [value]="false" /> Non
+      </label>
+    </div>
+    <div class="col-lg-12 form-group">
+      <label for="intitule">Aide contextuelle</label>
+      <textarea class="form-control" id="aide" name="aide" [(ngModel)]="questionInfo.aide"></textarea>
+    </div>
+    <div class="col-lg-12 form-group">
+      <label for="tag">Thème</label>
+      <input type="text" class="form-control" id="tag" name="tag" [(ngModel)]="questionInfo.tag" placeholder="Thème">
+    </div>
+    <div class="form-group">
+      <label class="checkbox-inline">
+        <label>Statut</label><br/>
+        <input name="statut" type="radio" [(ngModel)]="questionInfo.statut" [checked]="questionInfo.statut==true" [value]="true" /> Active
+        <input name="statut" type="radio" [(ngModel)]="questionInfo.statut" [checked]="questionInfo.statut==false" [value]="false" /> Désactivée
+      </label>
+    </div>
+    <div class="col-lg-12 form-group">
+      <label for="type">Type de réponse</label>
+      <select name="type" id="type" class="form-control" [(ngModel)]="questionInfo.type" (change) = "changeType()">
+        <option *ngFor="let type of types" [value]="type.value">{{type.label}}</option>
+      </select>
+    </div>
+    <div class="col-lg-12 form-group" *ngIf="questionInfo.type == 'radio'">
+      <h4>Indiquez les réponses possibles :</h4>
+      <div *ngFor="let row of rows; let Myindex=index" class="form-group">
+        <label>
+          <label>Choix {{Myindex + 1}}</label><br/>
+          <input type="radio"> <input name="choix{{Myindex + 1}}" type="text" placeholder="libellé du bouton radio {{Myindex + 1}}" [(ngModel)]="questionInfo.reponses[Myindex]"/>
+        </label>
+      </div>
+      <button class="btn btn-success" (click) = "addRow(1)"><i class="fa fa-plus-circle"></i> Ajouter un élément</button>
+    </div>
+    <div class="col-lg-12 form-group" *ngIf="questionInfo.type == 'checkbox'">
+      <h4>Indiquez les réponses possibles :</h4>
+      <div *ngFor="let row of rows; let Myindex=index" class="form-group">
+        <label>
+          <label>Choix {{Myindex + 1}}</label><br/>
+          <input type="checkbox"> <input name="choix{{Myindex + 1}}" type="text" placeholder="libellé de la case à cocher {{Myindex + 1}}" [(ngModel)]="questionInfo.reponses[Myindex]"/>
+        </label>
+      </div>
+      <button class="btn btn-success" (click) = "addRow(1)"><i class="fa fa-plus-circle"></i> Ajouter un élément</button>
+    </div>
+    <div class="clearfix"></div>
+    <br/>
+    <div class="col-lg-12">
+      <a class="btn btn-info" routerLink="/question/list">Annuler</a>
+      <button class="btn btn-success" (click) = "addQuestion()" *ngIf="action == 'add'">Sauvegarder la question</button>
+      <button class="btn btn-success" (click) = "updateQuestion()" *ngIf="action == 'edit'">Modifier la question</button>
+    </div>
+  </form>
+</div>
+<br/>
+<!-- /.row -->

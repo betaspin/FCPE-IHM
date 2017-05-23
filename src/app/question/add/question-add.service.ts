@@ -3,28 +3,32 @@ import { Http, Headers, RequestOptions} from '@angular/http';
 import 'rxjs/add/operator/map';
 
 @Injectable()
-export class EtablissementService {
+export class QuestionAddService {
 
   private headers: Headers;
   private options: RequestOptions;
-
-  private etablissements = [];
 
   constructor(private http: Http) {
     this.headers = new Headers({'Content-Type': 'application/json'});
     this.options = new RequestOptions({headers: this.headers});
   }
 
-  public getEtablissements(){
-    console.log('getEtablissement');
+  public addQuestion(question){
     return this.http
-      .get('http://localhost:8080/fcpe/api/etablissement', this.options)
+      .post('http://localhost:8080/fcpe/api/question', JSON.stringify(question), this.options)
       .map( res => res.json() );
   }
 
-  public deleteEtablissement(idEtablissement){
+  public updateQuestion(question){
     return this.http
-      .delete('http://localhost:8080/fcpe/api/etablissement/' + idEtablissement, this.options)
+      .put('http://localhost:8080/fcpe/api/question', JSON.stringify(question), this.options)
       .map( res => res.json() );
   }
+
+  public getQuestion(idQuestion){
+    return this.http
+      .get('http://localhost:8080/fcpe/api/question/' + idQuestion, this.options)
+      .map( res => res.json() );
+  }
+
 }

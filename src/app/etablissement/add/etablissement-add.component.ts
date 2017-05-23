@@ -9,6 +9,7 @@ const _ = require('lodash'); // Loadash
   templateUrl: './etablissement-add.component.html',
   styleUrls: ['./etablissement-add.component.css']
 })
+
 export class EtablissementAddComponent implements OnInit {
 
   private id: number;
@@ -22,34 +23,50 @@ export class EtablissementAddComponent implements OnInit {
     voie: '',
     codePostal: '',
     ville: '',
-    types: { optionCollege: true, optionLycee: true }
-  };
+    types: { optionCollege: false, optionLycee: false }
+  }
 
-  constructor(private etablissementAddService : EtablissementAddService, private router : Router, private route : ActivatedRoute) { }
+  constructor(private etablissementAddService: EtablissementAddService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
       // Get param id (if exists)
       this.id = +params['id']; // (+) converts string 'id' to a number
 
-      if(isNaN(this.id)){
+      if (isNaN(this.id)) {
         // Formulaire d'ajout
-        this.title = "Ajouter un établissement";
-        this.action = "add";
-      }else{
+        this.title = 'Ajouter un établissement';
+        this.action = 'add';
+      } else {
         // Formulaire d'édition
-        this.title = "Modifier un établissement";
-        this.action = "edit";
+        this.title = 'Modifier un établissement';
+        this.action = 'edit';
         // Récupération de l'établissement
         this.etablissementAddService.getEtablissement(this.id).subscribe((etablissement) => {
-          this.etablissementInfo = etablissement;
+          // Map
+          this.etablissementInfo.id = etablissement.id;
+          this.etablissementInfo.nom = etablissement.nom;
+          this.etablissementInfo.voie = etablissement.voie;
+          this.etablissementInfo.codePostal = etablissement.codePostal;
+          this.etablissementInfo.ville = etablissement.ville;
+          // Types
+          let i;
+          for(i = 0; i < etablissement.types.length; i++){
+            if (etablissement.types[i].id === 1) {
+              console.log('ok');
+              this.etablissementInfo.types.optionCollege = true;
+            }
+            if (etablissement.types[i].id === 2) {
+              this.etablissementInfo.types.optionLycee = true;
+            }
+          }
         });
       }
     });
   }
 
   public addEtablissement() {
-    this.etablissementInfo.id = "0";
+    this.etablissementInfo.id = '0';
     this.etablissementAddService.addEtablissement(this.etablissementInfo).subscribe((etablissement) => {
       this.router.navigate(['/etablissement/list']);
     });
@@ -64,5 +81,4 @@ export class EtablissementAddComponent implements OnInit {
   ngOnDestroy() {
     this.sub.unsubscribe();
   }
-
 }
