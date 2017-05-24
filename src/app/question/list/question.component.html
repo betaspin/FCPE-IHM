@@ -7,19 +7,16 @@
 <table class="table table-striped" [mfData]="questions" #mf="mfDataTable" [mfRowsOnPage]="25">
   <thead>
   <tr>
-    <th style="width: 18%">
-      <mfDefaultSorter by="id">id</mfDefaultSorter>
-    </th>
-    <th style="width: 18%">
+    <th style="width: 40%">
       <mfDefaultSorter by="intitule">Intitulé</mfDefaultSorter>
     </th>
-    <th style="width: 18%">
+    <th style="width: 10%">
       <mfDefaultSorter by="obligatoire">Obligatoire</mfDefaultSorter>
     </th>
-    <th style="width: 18%">
+    <th style="width: 10%">
       <mfDefaultSorter by="statut">Statut</mfDefaultSorter>
     </th>
-    <th style="width: 18%">
+    <th style="width: 30%">
       <mfDefaultSorter by="type">Type</mfDefaultSorter>
     </th>
     <th style="width: 10%">
@@ -29,7 +26,6 @@
   </thead>
   <tbody>
   <tr *ngFor="let item of mf.data | filterBy:{intitule: searchTitle}">
-    <td>{{item.id}}</td>
     <td>{{item.intitule}}</td>
     <td>{{item.obligatoire}}</td>
     <td>{{item.statut}}</td>
@@ -43,7 +39,7 @@
   </tbody>
   <tfoot>
   <tr>
-    <td colspan="4">
+    <td colspan="5">
       <mfBootstrapPaginator [rowsOnPageSet]="[5,10,25]"></mfBootstrapPaginator>
     </td>
   </tr>
