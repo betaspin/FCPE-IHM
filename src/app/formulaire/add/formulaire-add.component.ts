@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormulaireAddService} from './formulaire-add.service';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
+import {QuestionAddComponent} from "../../question/add/question-add.component";
 const _ = require('lodash'); // Loadash
 
 @Component({
@@ -16,6 +17,8 @@ export class FormulaireAddComponent implements OnInit {
   private title: string;
   private action: string;
 
+  private questions = [];
+
   private formulaireInfo = {
     id: '',
     nom: '',
@@ -23,7 +26,7 @@ export class FormulaireAddComponent implements OnInit {
     etat: '',
     serie: '',
     niveau: ''
-  }
+  };
 
   constructor(private formulaireAddService: FormulaireAddService, private router: Router, private route: ActivatedRoute) { }
 
@@ -50,15 +53,21 @@ export class FormulaireAddComponent implements OnInit {
 
   public addFormulaire() {
     this.formulaireInfo.id = '0';
-    this.formulaireAddService.addFormulaire(this.formulaireInfo).subscribe((formulaire) => {
-      this.router.navigate(['/formulaire/list']);
-    });
+    // S'il y a au moins une question dans le formulaire on peut enregistrer
+    if (this.questions.length > 0) {
+      this.formulaireAddService.addFormulaire(this.formulaireInfo).subscribe((formulaire) => {
+        this.router.navigate(['/formulaire/list']);
+      });
+    }
   }
 
   public updateFormulaire() {
-    this.formulaireAddService.updateFormulaire(this.formulaireInfo).subscribe((formulaire) => {
-      this.router.navigate(['/formulaire/list']);
-    });
+    // S'il y a au moins une question dans le formulaire on peut enregistrer
+    if (this.questions.length > 0) {
+      this.formulaireAddService.updateFormulaire(this.formulaireInfo).subscribe((formulaire) => {
+        this.router.navigate(['/formulaire/list']);
+      });
+    }
   }
 
 
@@ -67,6 +76,12 @@ export class FormulaireAddComponent implements OnInit {
       this.router.navigate(['/formulaire/list']);
     });
   }
+
+
+  public importerQuestion() {
+    console.log('Importez une question !!!!!!!');
+  }
+
 
 
   ngOnDestroy() {

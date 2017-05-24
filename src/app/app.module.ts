@@ -5,6 +5,7 @@ import {HttpModule} from '@angular/http';
 import {RouterModule, Routes} from '@angular/router';
 import {DataTableModule} from 'angular2-datatable';
 import {FilterByPipe} from './filters/filter.pipe';
+// Import pour les modals
 import {Ng2Bs3ModalModule} from 'ng2-bs3-modal/ng2-bs3-modal';
 
 import {AppComponent} from './app.component';

@@ -172,7 +172,23 @@
     </div>
   </form>
 </div>
-<!-- /.row -->
+
+
+<modal #modal>
+  <modal-header [show-close]="true">
+    <h4 class="modal-title">Alert!</h4>
+  </modal-header>
+  <modal-body>
+    Voulez-vous importer une question ou souhaitez-vous en créer une ?
+
+  </modal-body>
+  <modal-footer>
+    <button type="button" class="btn btn-default" data-dismiss="modal" (click)="modal.dismiss()">Annuler</button>
+    <!--<button type="button" class="btn btn-primary" (click)="addQuestion();modal.close()">Ajouter une question</button>-->
+    <button type="button" class="btn btn-primary" (click)="importerQuestion();modal.close()">Importer une question</button>
+  </modal-footer>
+</modal>
+
 
 
 
