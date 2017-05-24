@@ -20,6 +20,7 @@ import { QuestionComponent } from './question/list/question.component';
 import { QuestionService } from './question/list/question.service';
 import { QuestionAddComponent } from './question/add/question-add.component';
 import { QuestionAddService } from './question/add/question-add.service';
+import { QuestionComboComponent } from './question/combo/question-combo.component';
 
 const appRoutes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
@@ -39,7 +40,9 @@ const appRoutes: Routes = [
     EtablissementAddComponent,
     FilterByPipe,
     QuestionComponent,
-    QuestionAddComponent
+    QuestionAddComponent,
+    QuestionComboComponent,
+    QuestionComboComponent
   ],
   imports: [
     BrowserModule,
