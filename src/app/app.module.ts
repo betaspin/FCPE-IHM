@@ -26,6 +26,8 @@ import {FormulaireService} from './formulaire/list/formulaire.service';
 import {FormulaireAddComponent} from './formulaire/add/formulaire-add.component';
 import {FormulaireAddService} from './formulaire/add/formulaire-add.service';
 
+import { QuestionComboComponent } from './question/combo/question-combo.component';
+
 
 const appRoutes: Routes = [
   {path: 'dashboard', component: DashboardComponent},
@@ -49,6 +51,8 @@ const appRoutes: Routes = [
     FilterByPipe,
     QuestionComponent,
     QuestionAddComponent,
+    QuestionComboComponent,
+    QuestionComboComponent,
     FormulaireAddComponent,
     FormulaireComponent
   ],

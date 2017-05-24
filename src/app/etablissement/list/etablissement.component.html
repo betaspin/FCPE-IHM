@@ -29,7 +29,7 @@
     <td>{{item.ville}}</td>
     <td>
       <a routerLink="/etablissement/edit/{{item.id}}" class="btn btn-sm btn-primary"><i class="fa fa-pencil"></i></a>
-      <button class="btn btn-sm btn-warning" (click) = "deleteEtablissement(item.id)"><i class="fa fa-trash-o"></i></button>
+      <button class="btn btn-sm btn-warning" (click) = "idEtablissement=item.id;modal.open()"><i class="fa fa-trash-o"></i></button>
     </td>
   </tr>
   </tbody>
@@ -41,21 +41,6 @@
   </tr>
   </tfoot>
 </table>
-<br/>
-<div style="height: 500px; overflow: auto">
-  <div class="panel panel-default" *ngFor="let item of etablissements | filterBy:{nom: searchName} | filterBy:{ville: searchCity}">
-    <div class="panel-heading">{{item.nom}}</div>
-    <div class="panel-body">
-      <div style="float: left">
-        {{item.ville}}
-      </div>
-      <div style="float: right">
-        <a routerLink="/etablissement/edit/{{item.id}}" class="btn btn-sm btn-primary"><i class="fa fa-pencil"></i> Modifier</a>
-        <button class="btn btn-sm btn-warning" (click) = "idEtablissement=item.id;modal.open()"><i class="fa fa-trash-o"></i> Supprimer</button>
-      </div>
-    </div>
-  </div>
-</div>
 
 <modal #modal>
   <modal-header [show-close]="true">
