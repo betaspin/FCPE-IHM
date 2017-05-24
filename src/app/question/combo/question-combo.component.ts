@@ -1,5 +1,6 @@
-import {Component, OnInit,} from '@angular/core';
 import {QuestionService} from '../list/question.service';
+import { Component, OnInit } from '@angular/core';
+
 const _ = require('lodash');
 
 @Component({
@@ -10,8 +11,10 @@ const _ = require('lodash');
 export class QuestionComboComponent implements OnInit {
 
   // Used by Parent component
-  private questionSelected: number;
+
+  private questionSelected;
   public listQuestionSelected = [];
+
   // Model
   public questions = [];
 
