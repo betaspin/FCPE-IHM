@@ -15,11 +15,11 @@ export class QuestionAddComponent implements OnInit {
   private sub: any;
   private title: string;
   private action: string;
-  private types = [
+  private typesQuestion = [
     { label: 'Case à cocher', value: 'checkbox' },
     { label: 'Bouton radio', value: 'radio' },
     { label: 'Date', value: 'date' },
-    { label: 'Nombre', value: 'integer' },
+    { label: 'Nombre', value: 'number' },
     { label: 'Texte libre', value: 'text' }
   ];
   private rows;
@@ -29,59 +29,78 @@ export class QuestionAddComponent implements OnInit {
   // Default type : text
   // Default obligatoire : true
   // Default statut : true
-  private questionInfo = {
-    id: '1',
-    intitule: '',
-    type: 'text',
-    aide: '',
-    obligatoire: true,
-    statut: true,
-    tag: '',
-    reponses: []
-  };
+  // private questionInfo = {
+  //   id: 0,
+  //   intitule: '',
+  //   obligatoire: true,
+  //   aideContextuelle: '',
+  //   statut: true,
+  //   etat: true,
+  //   tag: '',
+  //   archive: false,
+  //   idEtablissement: 0,
+  //   idAdministrateur: 0,
+  //   typeQuestion: 'text',
+  //   reponsesProposees: [],
+  //   formulaires: []
+  // };
 
   // Model for test update
-  // private questionInfo = {
-  //   id: '1',
-  //   intitule: 'Question1',
-  //   type: 'radio',
-  //   aide: 'Aide contextuelle',
-  //   obligatoire: false,
-  //   statut: false,
-  //   tag: 'Cantine',
-  //   reponses: ['ooo', 'uuu', 'ppp']
-  // };
+  private questionInfo = {
+    id: 1,
+    intitule: 'Question1',
+    obligatoire: true,
+    aideContextuelle: 'Aide contextuelle de la question 1',
+    statut: true,
+    etat: true,
+    tag: '',
+    archive: false,
+    idEtablissement: 0,
+    idAdministrateur: 0,
+    typeQuestion: 'radio',
+    reponsesProposees: ['Oui', 'Non'],
+    formulaires: []
+  };
 
   constructor(private questionAddService: QuestionAddService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
-      // Get param id (if exists)
+
+      // Get param id
       this.id = +params['id']; // (+) converts string 'id' to a number
 
-      // if no id in params
+      // if param id doen't exist
+      // Add form
       if (isNaN(this.id)) {
-        // Formulaire d'ajout
         this.title = 'Ajouter une question';
         this.action = 'add';
-        // Nombre de réponses possibles par défaut : 2
+        // Nombre de réponses possibles par défaut = 2
         this.rows = new Array(2);
+      // If param id exist
+      // Edit form
       } else {
-        // Formulaire d'édition
-        this.title = 'Modifier un question';
+        this.title = 'Modifier une question';
         this.action = 'edit';
-        // Nombre de réponses
-        this.rows = new Array(this.questionInfo.reponses.length);
-        // Récupération de la question
+        // Get question info
         // this.questionAddService.getQuestion(this.id).subscribe((question) => {
         //   // Map
         //   this.questionInfo.id = question.id;
         //   this.questionInfo.intitule = question.intitule;
         //   this.questionInfo.obligatoire = question.obligatoire;
+        //   this.questionInfo.aideContextuelle = question.aideContextuelle;
         //   this.questionInfo.statut = question.statut;
+        //   this.questionInfo.etat = question.etat;
         //   this.questionInfo.tag = question.tag;
-        //   this.questionInfo.reponses = question.reponses;
+        //   this.questionInfo.archive = question.archive;
+        //   this.questionInfo.idEtablissement = question.idEtablissement;
+        //   this.questionInfo.idAdministrateur = question.idAdministrateur;
+        //   this.questionInfo.typeQuestion = question.typeQuestion;
+        //   this.questionInfo.reponsesProposees = question.reponsesProposees;
+        //   this.questionInfo.formulaires = question.formulaires;
         // });
+        // Set rows lentgth to reponsesProposees length
+        this.rows = new Array(this.questionInfo.reponsesProposees.length);
       }
     });
   }
@@ -110,8 +129,8 @@ export class QuestionAddComponent implements OnInit {
 
   // If type change, then reset responses
   changeType(){
-    if(this.questionInfo.type !== 'checkbox' && this.questionInfo.type !== 'radio'){
-      this.questionInfo.reponses = [];
+    if(this.questionInfo.typeQuestion !== 'checkbox' && this.questionInfo.typeQuestion !== 'radio'){
+      this.questionInfo.reponsesProposees = [];
       this.rows = new Array(2);
     }
   }
