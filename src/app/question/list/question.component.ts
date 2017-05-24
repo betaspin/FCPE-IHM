@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { QuestionService } from './question.service';
 import { QuestionComboComponent } from '../combo/question-combo.component';
 import { FilterByPipe } from '../../filters/filter.pipe';
@@ -12,6 +12,9 @@ const _ = require('lodash');
 export class QuestionComponent implements OnInit {
 
   private idQuestion;
+
+  @ViewChild(QuestionComboComponent)
+  private comboQuestion: QuestionComboComponent;
 
   // Model
   public questions = [];
