@@ -1,0 +1,178 @@
+<div class="row">
+  <ol class="breadcrumb">
+    <li><a routerLink="dashboard">Dashboard</a></li>
+    <li><a routerLink="formulaire/list">Formulaires</a></li>
+    <li class="active">{{title}}</li>
+  </ol>
+</div>
+<div class="row">
+  <div class="col-lg-12">
+    <h1 class="page-header">{{title}}</h1>
+  </div>
+</div>
+<div class="row">
+  <form name="new-formulaire-form">
+
+
+
+
+    <div class="col-lg-12 form-group">
+      <fieldset>
+        <legend>Banque de questions</legend>
+        <H4>Filtres</H4>
+
+        <table >
+
+          <tr>
+            <td>Niveau</td>
+            <td>Serie</td>
+            <td>Etablissement</td>
+            <td>classe</td>
+          </tr>
+
+          <tr>
+            <td>
+              <div>
+                <select >
+                  <option value="volvo">Volvo</option>
+                  <option value="saab">Saab</option>
+                  <option value="mercedes">Mercedes</option>
+                  <option value="audi">Audi</option>
+                </select>
+              </div>
+            </td>
+            <td>
+              <div>
+                <select>
+                  <option value="volvo">Volvo</option>
+                  <option value="saab">Saab</option>
+                  <option value="mercedes">Mercedes</option>
+                  <option value="audi">Audi</option>
+                </select>
+              </div>
+            </td>
+            <td>
+              <div>
+                <select>
+                  <option value="volvo">Volvo</option>
+                  <option value="saab">Saab</option>
+                  <option value="mercedes">Mercedes</option>
+                  <option value="audi">Audi</option>
+                </select>
+              </div>
+            </td>
+
+            <td>
+              <div >
+                <select>
+                  <option value="volvo">Volvo</option>
+                  <option value="saab">Saab</option>
+                  <option value="mercedes">Mercedes</option>
+                  <option value="audi">Audi</option>
+                </select>
+              </div>
+            </td>
+
+          </tr>
+        </table>
+      </fieldset>
+
+
+
+      <fieldset>
+        <legend>Metadata</legend>
+
+        <table >
+
+          <tr>
+            <td>Niveau</td>
+            <td>Serie</td>
+            <td>Etat</td>
+            <td>classe</td>
+          </tr>
+
+          <tr>
+            <td>
+              <div>
+                <select >
+                  <option value="volvo">Volvo</option>
+                  <option value="saab">Saab</option>
+                  <option value="mercedes">Mercedes</option>
+                  <option value="audi">Audi</option>
+                </select>
+              </div>
+            </td>
+            <td>
+              <div>
+                <select>
+                  <option value="volvo">Volvo</option>
+                  <option value="saab">Saab</option>
+                  <option value="mercedes">Mercedes</option>
+                  <option value="audi">Audi</option>
+                </select>
+              </div>
+            </td>
+            <td>
+              <div>
+                <select>
+                  <option value="volvo">Volvo</option>
+                  <option value="saab">Saab</option>
+                  <option value="mercedes">Mercedes</option>
+                  <option value="audi">Audi</option>
+                </select>
+              </div>
+            </td>
+
+            <td>
+              <div >
+                <select>
+                  <option value="volvo">Volvo</option>
+                  <option value="saab">Saab</option>
+                  <option value="mercedes">Mercedes</option>
+                  <option value="audi">Audi</option>
+                </select>
+              </div>
+            </td>
+
+          </tr>
+        </table>
+      </fieldset>
+
+
+
+
+    </div>
+    <br>
+    <div class="col-lg-12 form-group">
+      <label for="Nom">Nom</label>
+      <input type="text" class="form-control" id="nom" name="nom" [(ngModel)]="formulaireInfo.nom" placeholder="Titre du formulaire">
+    </div>
+
+
+    <div class="col-lg-12 form-group">
+      <fieldset>
+        <legend>Questions</legend>
+       <a class="btn btn-info" (click)="modal.open()">Ajouter une question</a>
+
+      </fieldset>
+    </div>
+
+    <div class="clearfix"></div>
+    <br/>
+    <div class="col-lg-12">
+      <a class="btn btn-info" routerLink="/formulaire/list">Annuler</a>
+      <button class="btn btn-success" (click) = "addFormulaire()" *ngIf="action == 'add'">Sauvegarder le formulaire</button>
+      <button class="btn btn-success" (click) = "previsualiserFormulaire()" *ngIf="action == 'add'">Prévisualiser le formulaire</button>
+      <button class="btn btn-success" (click) = "updateFormulaire()" *ngIf="action == 'add'">Sauvegarder et démarrer une campagne</button>
+
+
+
+
+
+    </div>
+  </form>
+</div>
+<!-- /.row -->
+
+
+
