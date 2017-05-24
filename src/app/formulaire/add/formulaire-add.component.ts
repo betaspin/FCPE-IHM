@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormulaireAddService} from './formulaire-add.service';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
-import {QuestionAddComponent} from "../../question/add/question-add.component";
+import { QuestionComboComponent } from '../../question/combo/question-combo.component';
 const _ = require('lodash'); // Loadash
 
 @Component({
