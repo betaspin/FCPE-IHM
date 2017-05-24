@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import {FormulaireAddService} from './formulaire-add.service';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
@@ -18,6 +18,10 @@ export class FormulaireAddComponent implements OnInit {
   private action: string;
 
   private questions = [];
+
+  // permet d'avoir acces aux données du composant fille
+  @ViewChild(QuestionComboComponent)
+  private comboQuestion: QuestionComboComponent;
 
   private formulaireInfo = {
     id: '',
@@ -52,6 +56,7 @@ export class FormulaireAddComponent implements OnInit {
   }
 
   public addFormulaire() {
+     this.questions =  this.comboQuestion.listQuestionSelected;
     this.formulaireInfo.id = '0';
     // S'il y a au moins une question dans le formulaire on peut enregistrer
     if (this.questions.length > 0) {

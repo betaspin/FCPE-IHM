@@ -49,10 +49,10 @@ export class FormulaireComponent implements OnInit {
 
   private formulairesBouchon() {
     this.formulaires = [
-      {    id: '1', nom: 'form1', statut: 'true', etat: 'false', niveau: '1ere', serie: 'S'},
-      {    id: '2', nom: 'form2', statut: 'false', etat: 'true', niveau: '2nd', serie: 'ES'},
-      {    id: '3', nom: 'Form3', statut: 'true', etat: 'true', niveau: 'Tle', serie: 'L'},
-      {    id: '3', nom: 'Form4fffffffffffffffffffffffffffffffffffd', statut: 'false', etat: 'false', niveau: 'Terminale', serie: 'S'}
+      {    id: 1, nom: 'form1', statut: 'true', etat: 'false', niveau: '1ere', serie: 'S'},
+      {    id: 2, nom: 'form2', statut: 'false', etat: 'true', niveau: '2nd', serie: 'ES'},
+      {    id: 3, nom: 'Form3', statut: 'true', etat: 'true', niveau: 'Tle', serie: 'L'},
+      {    id: 3, nom: 'Form4fffffffffffffffffffffffffffffffffffd', statut: 'false', etat: 'false', niveau: 'Terminale', serie: 'S'}
     ];
   }
 }
