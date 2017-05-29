@@ -65,7 +65,7 @@ export class QuestionComponent implements OnInit {
       { id: 2, intitule: 'Question2', obligatoire: 'non', statut: 'Spécifique', type: 'Bouton radio' },
       { id: 3, intitule: 'Question3', obligatoire: 'oui', statut: 'Spécifique', type: 'Date' },
       { id: 4, intitule: 'Question4', obligatoire: 'non', statut: 'Générique', type: 'Nombre' },
-      { id: 5, intitule: 'Question5', obligatoire: 'oui', statut: 'Générique', type: 'Texte libre' },
+      { id: 5, intitule: 'Question5', obligatoire: 'oui', statut: 'Générique', type: 'Texte libre' }
       ];
   }
 

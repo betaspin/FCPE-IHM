@@ -13,13 +13,7 @@
 <div class="row">
   <form name="new-formulaire-form">
 
-
-
-
     <div class="col-lg-12 form-group">
-
-
-
 
       <fieldset>
         <legend>Metadata</legend>
@@ -36,7 +30,7 @@
           <tr>
             <td>
               <div>
-                <select >
+                <select id="niveau" name="niveau"  [(ngModel)]="formulaireInfo.niveau">
                   <option value="0">Tle</option>
                   <option value="1">1ere</option>
                   <option value="2">2nd</option>
@@ -49,7 +43,7 @@
             </td>
             <td>
               <div>
-                <select>
+                <select id="serie" name="serie"  [(ngModel)]="formulaireInfo.serie">
                   <option value="S">S</option>
                   <option value="ES">ES</option>
                   <option value="L">L</option>
@@ -59,16 +53,16 @@
             </td>
             <td>
               <div>
-                <select>
-                  <option value="actif">actif</option>
-                  <option value="inactif">inactif</option>
+                <select id="etat" name="etat"  [(ngModel)]="formulaireInfo.etat">
+                  <option value="TRUE">actif</option>
+                  <option value="FALSE">inactif</option>
                 </select>
               </div>
             </td>
 
             <td>
               <div >
-                <select>
+                <select id="classe" name="classe" [(ngModel)]="formulaireInfo.classe">
                   <option value="classe1">A</option>
                   <option value="classe2">B</option>
                   <option value="classe3">C</option>
@@ -90,86 +84,12 @@
 
       <fieldset>
         <legend>Banque de questions</legend>
-  <!--      <H4>Filtres</H4>
-
-        <table >
-
-          <tr>
-            <td>Niveau</td>
-            <td>Serie</td>
-            <td>Etablissement</td>
-            <td>classe</td>
-          </tr>
-
-          <tr>
-            <td>
-              <div>
-                <select >
-                  <option value="0">Tle</option>
-                  <option value="1">1ere</option>
-                  <option value="2">2nd</option>
-                  <option value="3">3eme</option>
-                  <option value="4">4eme</option>
-                  <option value="5">5ere</option>
-                  <option value="6">6eme</option>
-                </select>
-              </div>
-            </td>
-            <td>
-              <div>
-                <select>
-                  <option value="S">S</option>
-                  <option value="ES">ES</option>
-                  <option value="L">L</option>
-                  <option value="Tech">Technologie</option>
-                </select>
-              </div>
-            </td>
-            <td>
-              <div>
-                <select>
-                  <option value="etab1">etab1</option>
-                  <option value="etab2">Etab2</option>
-                  <option value="etab3">Etab3</option>
-                  <option value="etab4">Etab4</option>
-                </select>
-              </div>
-            </td>
-
-            <td>
-              <div >
-                <select>
-                  <option value="classe1">A</option>
-                  <option value="classe2">B</option>
-                  <option value="classe3">C</option>
-                  <option value="classe4">D</option>
-                </select>
-              </div>
-            </td>
-
-          </tr>
-        </table>-->
         <app-question-combo></app-question-combo>
         {{ comboQuestion.listQuestionSelected}}
+        <app-question>   </app-question>
       </fieldset>
 
 
-
-    <div class="clearfix"></div>
-    <br/>
-    <div class="col-lg-12">
-      <a class="btn btn-info" routerLink="/formulaire/list">Annuler</a>
-      <button class="btn btn-success" (click) = "addFormulaire()" *ngIf="action == 'add'">Sauvegarder le formulaire</button>
-      <button class="btn btn-success" (click) = "previsualiserFormulaire()" *ngIf="action == 'add'">Prévisualiser le formulaire</button>
-      <button class="btn btn-success" (click) = "updateFormulaire()" *ngIf="action == 'add'">Sauvegarder et démarrer une campagne</button>
-
-
-
-
-
-    </div>
-  </form>
-</div>
 
 
 <modal #modal>

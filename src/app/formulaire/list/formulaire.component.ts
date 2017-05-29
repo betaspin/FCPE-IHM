@@ -30,7 +30,7 @@ export class FormulaireComponent implements OnInit {
 
   constructor(private formulaireService: FormulaireService) {
     // TODO
-    this.formulairesBouchon();
+    //this.formulairesBouchon();
   }
 
   ngOnInit() {

@@ -3,6 +3,7 @@ import {FormulaireAddService} from './formulaire-add.service';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { QuestionComboComponent } from '../../question/combo/question-combo.component';
+import {QuestionComponent} from "../../question/list/question.component";
 const _ = require('lodash'); // Loadash
 
 @Component({
@@ -17,19 +18,36 @@ export class FormulaireAddComponent implements OnInit {
   private title: string;
   private action: string;
 
-  private questions = [];
-
+  // Model
+  public questions = [];
+/*
+  // Model
+  private questionInfo = {
+    id: '',
+    intitule: '',
+    obligatoire: '',
+    statut: '',
+    type: ''
+  };
+*/
   // permet d'avoir acces aux données du composant fille
   @ViewChild(QuestionComboComponent)
   private comboQuestion: QuestionComboComponent;
 
+  // permet d'avoir acces aux données du composant fille
+  @ViewChild(QuestionComponent)
+  private questionInfo: QuestionComponent;
+
+
+
   private formulaireInfo = {
-    id: '',
+    id: NaN,
     nom: '',
     statut: '',
     etat: '',
     serie: '',
-    niveau: ''
+    niveau: '',
+    classe: ''
   };
 
   constructor(private formulaireAddService: FormulaireAddService, private router: Router, private route: ActivatedRoute) { }
@@ -44,9 +62,18 @@ export class FormulaireAddComponent implements OnInit {
         this.title = 'Ajouter un formulaire';
         this.action = 'add';
       }else {
+        console.log(this.id);
         // Formulaire d'édition
         this.title = 'Modifier un formulaire';
         this.action = 'edit';
+
+        this.formulaireInfo.id = this.id;
+        this.formulaireInfo.nom = 'monFormulaire perso';
+        this.formulaireInfo.serie = 'L';
+        this.formulaireInfo.classe = 'classe2';
+        this.formulaireInfo.niveau = '3';
+        this.formulaireInfo.etat = 'TRUE';
+
         // Récupération du formulaire
         this.formulaireAddService.getFormulaire(this.id).subscribe((formulaire) => {
           this.formulaireInfo = formulaire;
@@ -57,7 +84,7 @@ export class FormulaireAddComponent implements OnInit {
 
   public addFormulaire() {
      this.questions =  this.comboQuestion.listQuestionSelected;
-    this.formulaireInfo.id = '0';
+      this.formulaireInfo.id = 0;
     // S'il y a au moins une question dans le formulaire on peut enregistrer
     if (this.questions.length > 0) {
       this.formulaireAddService.addFormulaire(this.formulaireInfo).subscribe((formulaire) => {
