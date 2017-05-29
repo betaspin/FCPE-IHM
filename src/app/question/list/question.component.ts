@@ -1,7 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { QuestionService } from './question.service';
 import { FilterByPipe } from '../../filters/filter.pipe';
-import {forEach} from "@angular/router/src/utils/collection";
 const _ = require('lodash');
 
 @Component({
@@ -25,48 +24,58 @@ export class QuestionComponent implements OnInit {
     type: ''
   };
 
-  protected searchTitle = ''; // Search by intitule field
+  private searchTitle = ''; // Search by intitule field
+
+  public promiseTest  = function(question){
+    const questionInfo = {
+      id: '',
+      intitule: '',
+      obligatoire: '',
+      statut: '',
+      type: ''
+    };
+    const promise = new Promise((resolve, reject) => {
+      questionInfo.id = question.id;
+      questionInfo.intitule = question.intitule;
+      questionInfo.obligatoire = question.obligatoire === true ? 'Oui' : 'Non';
+      questionInfo.statut = question.statut === true ? 'Générique' : 'Spécifique';
+      switch (question.typeQuestion) {
+        case 'radio':
+          questionInfo.type = 'Bouton radio';
+          break;
+        case 'checkbox':
+          questionInfo.type = 'Case à cocher';
+          break;
+        case 'date':
+          questionInfo.type = 'Date';
+          break;
+        case 'number':
+          questionInfo.type = 'Nombre';
+          break;
+        case 'text':
+        default:
+          questionInfo.type = 'Texte libre';
+          break;
+      }
+      resolve(questionInfo);
+    });
+    return promise;
+  };
 
   constructor(private questionService : QuestionService) {}
 
   ngOnInit() {
 
-/*    this.questionService.getQuestions().subscribe((questions) => {
-      for(const question of questions){
-        this.questionInfo.id = question.id;
-        this.questionInfo.intitule = question.intitule;
-        this.questionInfo.obligatoire = question.obligatoire === true ? 'Oui' : 'Non';
-        this.questionInfo.statut = question.statut === true ? 'Générique' : 'Spécifique';
-        switch (question.type) {
-          case 'radio':
-            this.questionInfo.type = 'Bouton radio';
-            break;
-          case 'checkbox':
-            this.questionInfo.type = 'Case à cocher';
-            break;
-          case 'date':
-            this.questionInfo.type = 'Date';
-            break;
-          case 'number':
-            this.questionInfo.type = 'Nombre';
-            break;
-          case 'text':
-          default:
-            this.questionInfo.type = 'Texte libre';
-            break;
-        }
-        this.questions.push(this.questionInfo);
+    this.questionService.getQuestions().subscribe((questions) => {
+      const questionArray = [];
+      for(const question of questions) {
+        this.promiseTest(question).then((quest) => {
+          questionArray.push(quest);
+        });
       }
-    });*/
+      this.questions  = questionArray;
+    });
 
-
-    this.questions = [
-      { id: 1, intitule: 'Question1', obligatoire: 'oui', statut: 'Générique', type: 'Case à cocher' },
-      { id: 2, intitule: 'Question2', obligatoire: 'non', statut: 'Spécifique', type: 'Bouton radio' },
-      { id: 3, intitule: 'Question3', obligatoire: 'oui', statut: 'Spécifique', type: 'Date' },
-      { id: 4, intitule: 'Question4', obligatoire: 'non', statut: 'Générique', type: 'Nombre' },
-      { id: 5, intitule: 'Question5', obligatoire: 'oui', statut: 'Générique', type: 'Texte libre' },
-      ];
   }
 
   public deleteQuestion() {

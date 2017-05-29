@@ -9,6 +9,10 @@ import {Ng2Bs3ModalModule} from 'ng2-bs3-modal/ng2-bs3-modal';
 
 import {AppComponent} from './app.component';
 
+import {AuthGuard} from './auth.gard';
+import {AuthenticationService} from './authentication.service';
+import {LoginComponent} from './login/login.component';
+
 import {DashboardComponent} from './dashboard/dashboard.component';
 
 import {EtablissementComponent} from './etablissement/list/etablissement.component';
@@ -25,11 +29,13 @@ import {FormulaireService} from './formulaire/list/formulaire.service';
 import {FormulaireAddComponent} from './formulaire/add/formulaire-add.component';
 import {FormulaireAddService} from './formulaire/add/formulaire-add.service';
 
-import { QuestionComboComponent } from './question/combo/question-combo.component';
+import {QuestionComboComponent} from './question/combo/question-combo.component';
+
 
 
 const appRoutes: Routes = [
-  {path: 'dashboard', component: DashboardComponent},
+  {path: 'login', component: LoginComponent},
+  {path: '', component: DashboardComponent, canActivate: [AuthGuard]},
   {path: 'etablissement/list', component: EtablissementComponent},
   {path: 'etablissement/add', component: EtablissementAddComponent},
   {path: 'etablissement/edit/:id', component: EtablissementAddComponent},
@@ -53,7 +59,8 @@ const appRoutes: Routes = [
     QuestionComboComponent,
     QuestionComboComponent,
     FormulaireAddComponent,
-    FormulaireComponent
+    FormulaireComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -64,6 +71,8 @@ const appRoutes: Routes = [
     Ng2Bs3ModalModule
   ],
   providers: [
+    AuthGuard,
+    AuthenticationService,
     EtablissementService,
     EtablissementAddService,
     QuestionService,
