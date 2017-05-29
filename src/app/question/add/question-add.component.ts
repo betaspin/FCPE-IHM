@@ -29,38 +29,38 @@ export class QuestionAddComponent implements OnInit {
   // Default type : text
   // Default obligatoire : true
   // Default statut : true
-  // private questionInfo = {
-  //   id: 0,
-  //   intitule: '',
-  //   obligatoire: true,
-  //   aideContextuelle: '',
-  //   statut: true,
-  //   etat: true,
-  //   tag: '',
-  //   archive: false,
-  //   idEtablissement: 0,
-  //   idAdministrateur: 0,
-  //   typeQuestion: 'text',
-  //   reponsesProposees: [],
-  //   formulaires: []
-  // };
-
-  // Model for test update
   private questionInfo = {
-    id: 1,
-    intitule: 'Question1',
+    id: 0,
+    intitule: '',
     obligatoire: true,
-    aideContextuelle: 'Aide contextuelle de la question 1',
+    aideContextuelle: '',
     statut: true,
     etat: true,
     tag: '',
     archive: false,
     idEtablissement: 0,
     idAdministrateur: 0,
-    typeQuestion: 'radio',
-    reponsesProposees: ['Oui', 'Non'],
+    typeQuestion: 'text',
+    reponsesProposees: [],
     formulaires: []
   };
+
+  // Model for test update
+  // private questionInfo = {
+  //   id: 1,
+  //   intitule: 'Question1',
+  //   obligatoire: true,
+  //   aideContextuelle: 'Aide contextuelle de la question 1',
+  //   statut: true,
+  //   etat: true,
+  //   tag: '',
+  //   archive: false,
+  //   idEtablissement: 0,
+  //   idAdministrateur: 0,
+  //   typeQuestion: 'radio',
+  //   reponsesProposees: ['Oui', 'Non'],
+  //   formulaires: []
+  // };
 
   constructor(private questionAddService: QuestionAddService, private router: Router, private route: ActivatedRoute) { }
 
