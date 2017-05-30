@@ -67,7 +67,7 @@ export class QuestionAddComponent implements OnInit {
         // Get question info
         this.questionAddService.getQuestion(this.id).subscribe((question) => {
           // Map
-          console.log(question);
+          // console.log(question);
           this.questionInfo.id = question.id;
           this.questionInfo.intitule = question.intitule;
           this.questionInfo.obligatoire = question.obligatoire;

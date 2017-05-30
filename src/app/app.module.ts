@@ -34,8 +34,9 @@ import {QuestionComboComponent} from './question/combo/question-combo.component'
 
 const appRoutes: Routes = [
   {path: 'login', component: LoginComponent},
-  {path: '', component: DashboardComponent, canActivate: [AuthGuard]},
-  {path: 'etablissement/list', component: EtablissementComponent},
+  {path: '', component: LoginComponent},
+  {path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
+  {path: 'etablissement/list', component: EtablissementComponent, canActivate: [AuthGuard]},
   {path: 'etablissement/add', component: EtablissementAddComponent},
   {path: 'etablissement/edit/:id', component: EtablissementAddComponent},
   {path: 'question/list', component: QuestionComponent},

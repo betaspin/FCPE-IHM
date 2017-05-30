@@ -1,6 +1,6 @@
 <div id="wrapper">
   <!-- Navigation -->
-  <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+  <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0" [ngClass]="{ 'hide': router.url === '/login' }">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
         <span class="sr-only">Navigation</span>
@@ -23,7 +23,7 @@
           <li><a href="#"><i class="fa fa-gear fa-fw"></i> Préférences</a>
           </li>
           <li class="divider"></li>
-          <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Déconnexion</a>
+          <li (click) = "logout()"><a><i class="fa fa-sign-out fa-fw"></i> Déconnexion</a>
           </li>
         </ul>
         <!-- /.dropdown-user -->
@@ -132,6 +132,5 @@
   <div id="page-wrapper">
     <router-outlet></router-outlet>
   </div>
-
 </div>
 <!-- /#wrapper -->
