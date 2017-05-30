@@ -38,29 +38,11 @@ export class QuestionAddComponent implements OnInit {
     etat: true,
     tag: '',
     archive: false,
-    idEtablissement: 0,
-    idAdministrateur: 0,
+    administrateur: 0,
     typeQuestion: 'text',
     reponsesProposees: [],
     formulaires: []
   };
-
-  // Model for test update
-  // private questionInfo = {
-  //   id: 1,
-  //   intitule: 'Question1',
-  //   obligatoire: true,
-  //   aideContextuelle: 'Aide contextuelle de la question 1',
-  //   statut: true,
-  //   etat: true,
-  //   tag: '',
-  //   archive: false,
-  //   idEtablissement: 0,
-  //   idAdministrateur: 0,
-  //   typeQuestion: 'radio',
-  //   reponsesProposees: ['Oui', 'Non'],
-  //   formulaires: []
-  // };
 
   constructor(private questionAddService: QuestionAddService, private router: Router, private route: ActivatedRoute) { }
 
@@ -76,48 +58,48 @@ export class QuestionAddComponent implements OnInit {
         this.title = 'Ajouter une question';
         this.action = 'add';
         // Nombre de réponses possibles par défaut = 2
-        this.rows = new Array(2);
+        this.setRows(2);
       // If param id exist
       // Edit form
       } else {
         this.title = 'Modifier une question';
         this.action = 'edit';
         // Get question info
-        // this.questionAddService.getQuestion(this.id).subscribe((question) => {
-        //   // Map
-        //   this.questionInfo.id = question.id;
-        //   this.questionInfo.intitule = question.intitule;
-        //   this.questionInfo.obligatoire = question.obligatoire;
-        //   this.questionInfo.aideContextuelle = question.aideContextuelle;
-        //   this.questionInfo.statut = question.statut;
-        //   this.questionInfo.etat = question.etat;
-        //   this.questionInfo.tag = question.tag;
-        //   this.questionInfo.archive = question.archive;
-        //   this.questionInfo.idEtablissement = question.idEtablissement;
-        //   this.questionInfo.idAdministrateur = question.idAdministrateur;
-        //   this.questionInfo.typeQuestion = question.typeQuestion;
-        //   this.questionInfo.reponsesProposees = question.reponsesProposees;
-        //   this.questionInfo.formulaires = question.formulaires;
-        // });
-        // Set rows lentgth to reponsesProposees length
-        this.rows = new Array(this.questionInfo.reponsesProposees.length);
+        this.questionAddService.getQuestion(this.id).subscribe((question) => {
+          // Map
+          console.log(question);
+          this.questionInfo.id = question.id;
+          this.questionInfo.intitule = question.intitule;
+          this.questionInfo.obligatoire = question.obligatoire;
+          this.questionInfo.aideContextuelle = question.aideContextuelle;
+          this.questionInfo.statut = question.statut;
+          this.questionInfo.etat = question.etat;
+          this.questionInfo.tag = question.tag;
+          this.questionInfo.archive = question.archive;
+          this.questionInfo.administrateur = question.administrateur;
+          this.questionInfo.typeQuestion = question.typeQuestion;
+          this.questionInfo.reponsesProposees = question.reponsesProposees;
+          this.questionInfo.formulaires = question.formulaires;
+          // Set rows lentgth to reponsesProposees length
+          this.setRows(this.questionInfo.reponsesProposees.length);
+        });
       }
     });
   }
 
   public addQuestion() {
-    console.dir(this.questionInfo);
-    // this.questionInfo.id = '0';
-    // this.questionAddService.addQuestion(this.questionInfo).subscribe((question) => {
-    //   this.router.navigate(['/question/list']);
-    // });
+    this.questionInfo.id = 0;
+    this.questionInfo.administrateur = 1;
+    //console.log(this.questionInfo);
+    this.questionAddService.addQuestion(this.questionInfo).subscribe((question) => {
+      this.router.navigate(['/question/list']);
+    });
   }
 
   public updateQuestion() {
-    console.dir(this.questionInfo);
-    // this.questionAddService.updateQuestion(this.questionInfo).subscribe((question) => {
-    //   this.router.navigate(['/question/list']);
-    // });
+    this.questionAddService.updateQuestion(this.questionInfo).subscribe((question) => {
+      this.router.navigate(['/question/list']);
+    });
   }
 
   ngAfterViewInit() { }
@@ -127,11 +109,19 @@ export class QuestionAddComponent implements OnInit {
     this.rows = new Array(this.rows.length + nbRows);
   }
 
+  setRows(nbRows){
+    this.rows = new Array(nbRows);
+  }
+
   // If type change, then reset responses
   changeType(){
     if(this.questionInfo.typeQuestion !== 'checkbox' && this.questionInfo.typeQuestion !== 'radio'){
       this.questionInfo.reponsesProposees = [];
-      this.rows = new Array(2);
+      this.setRows(2);
+    }else if(this.questionInfo.reponsesProposees.length > 0){
+      this.setRows(this.questionInfo.reponsesProposees.length);
+    }else{
+      this.setRows(2);
     }
   }
 

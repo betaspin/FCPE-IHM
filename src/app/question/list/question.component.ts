@@ -75,7 +75,6 @@ export class QuestionComponent implements OnInit {
       }
       this.questions  = questionArray;
     });
-
   }
 
   public deleteQuestion() {

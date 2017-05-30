@@ -13,71 +13,7 @@
 <div class="row">
   <form name="new-formulaire-form">
 
-
-
-
     <div class="col-lg-12 form-group">
-      <fieldset>
-        <legend>Banque de questions</legend>
-        <H4>Filtres</H4>
-
-        <table >
-
-          <tr>
-            <td>Niveau</td>
-            <td>Serie</td>
-            <td>Etablissement</td>
-            <td>classe</td>
-          </tr>
-
-          <tr>
-            <td>
-              <div>
-                <select >
-                  <option value="volvo">Volvo</option>
-                  <option value="saab">Saab</option>
-                  <option value="mercedes">Mercedes</option>
-                  <option value="audi">Audi</option>
-                </select>
-              </div>
-            </td>
-            <td>
-              <div>
-                <select>
-                  <option value="volvo">Volvo</option>
-                  <option value="saab">Saab</option>
-                  <option value="mercedes">Mercedes</option>
-                  <option value="audi">Audi</option>
-                </select>
-              </div>
-            </td>
-            <td>
-              <div>
-                <select>
-                  <option value="volvo">Volvo</option>
-                  <option value="saab">Saab</option>
-                  <option value="mercedes">Mercedes</option>
-                  <option value="audi">Audi</option>
-                </select>
-              </div>
-            </td>
-
-            <td>
-              <div >
-                <select>
-                  <option value="volvo">Volvo</option>
-                  <option value="saab">Saab</option>
-                  <option value="mercedes">Mercedes</option>
-                  <option value="audi">Audi</option>
-                </select>
-              </div>
-            </td>
-
-          </tr>
-        </table>
-      </fieldset>
-
-
 
       <fieldset>
         <legend>Metadata</legend>
@@ -94,42 +30,43 @@
           <tr>
             <td>
               <div>
-                <select >
-                  <option value="volvo">Volvo</option>
-                  <option value="saab">Saab</option>
-                  <option value="mercedes">Mercedes</option>
-                  <option value="audi">Audi</option>
+                <select id="niveau" name="niveau"  [(ngModel)]="formulaireInfo.niveau">
+                  <option value="0">Tle</option>
+                  <option value="1">1ere</option>
+                  <option value="2">2nd</option>
+                  <option value="3">3eme</option>
+                  <option value="4">4eme</option>
+                  <option value="5">5ere</option>
+                  <option value="6">6eme</option>
                 </select>
               </div>
             </td>
             <td>
               <div>
-                <select>
-                  <option value="volvo">Volvo</option>
-                  <option value="saab">Saab</option>
-                  <option value="mercedes">Mercedes</option>
-                  <option value="audi">Audi</option>
+                <select id="serie" name="serie"  [(ngModel)]="formulaireInfo.serie">
+                  <option value="S">S</option>
+                  <option value="ES">ES</option>
+                  <option value="L">L</option>
+                  <option value="Tech">Technologie</option>
                 </select>
               </div>
             </td>
             <td>
               <div>
-                <select>
-                  <option value="volvo">Volvo</option>
-                  <option value="saab">Saab</option>
-                  <option value="mercedes">Mercedes</option>
-                  <option value="audi">Audi</option>
+                <select id="etat" name="etat"  [(ngModel)]="formulaireInfo.etat">
+                  <option value="TRUE">actif</option>
+                  <option value="FALSE">inactif</option>
                 </select>
               </div>
             </td>
 
             <td>
               <div >
-                <select>
-                  <option value="volvo">Volvo</option>
-                  <option value="saab">Saab</option>
-                  <option value="mercedes">Mercedes</option>
-                  <option value="audi">Audi</option>
+                <select id="classe" name="classe" [(ngModel)]="formulaireInfo.classe">
+                  <option value="classe1">A</option>
+                  <option value="classe2">B</option>
+                  <option value="classe3">C</option>
+                  <option value="classe4">D</option>
                 </select>
               </div>
             </td>
@@ -138,41 +75,38 @@
         </table>
       </fieldset>
 
-
-
-
     </div>
-    <br>
-    <div class="col-lg-12 form-group">
-      <label for="Nom">Nom</label>
-      <input type="text" class="form-control" id="nom" name="nom" [(ngModel)]="formulaireInfo.nom" placeholder="Titre du formulaire">
-    </div>
+      <br>
+      <div class="col-lg-12 form-group">
+        <label for="Nom">Nom</label>
+        <input type="text" class="form-control" id="nom" name="nom" [(ngModel)]="formulaireInfo.nom" placeholder="Titre du formulaire">
+      </div>
 
-
-    <div class="col-lg-12 form-group">
       <fieldset>
-        <legend>Questions</legend>
-       <a class="btn btn-info" (click)="modal.open()">Ajouter une question</a>
-
+        <legend>Banque de questions</legend>
+        <app-question-combo></app-question-combo>
+        {{ comboQuestion.listQuestionSelected}}
+        <app-question>   </app-question>
       </fieldset>
-    </div>
-
-    <div class="clearfix"></div>
-    <br/>
-    <div class="col-lg-12">
-      <a class="btn btn-info" routerLink="/formulaire/list">Annuler</a>
-      <button class="btn btn-success" (click) = "addFormulaire()" *ngIf="action == 'add'">Sauvegarder le formulaire</button>
-      <button class="btn btn-success" (click) = "previsualiserFormulaire()" *ngIf="action == 'add'">Prévisualiser le formulaire</button>
-      <button class="btn btn-success" (click) = "updateFormulaire()" *ngIf="action == 'add'">Sauvegarder et démarrer une campagne</button>
 
 
 
 
+<modal #modal>
+  <modal-header [show-close]="true">
+    <h4 class="modal-title">Alert!</h4>
+  </modal-header>
+  <modal-body>
+    Voulez-vous importer une question ou souhaitez-vous en créer une ?
 
-    </div>
-  </form>
-</div>
-<!-- /.row -->
+  </modal-body>
+  <modal-footer>
+    <button type="button" class="btn btn-default" data-dismiss="modal" (click)="modal.dismiss()">Annuler</button>
+    <!--<button type="button" class="btn btn-primary" (click)="addQuestion();modal.close()">Ajouter une question</button>-->
+    <button type="button" class="btn btn-primary" (click)="importerQuestion();modal.close()">Importer une question</button>
+  </modal-footer>
+</modal>
+
 
 
 

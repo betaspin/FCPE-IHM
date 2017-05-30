@@ -4,7 +4,7 @@
     <input type="text" name="nom" placeholder="Rechercher par intitulé" [(ngModel)]="searchTitle" class="form-control"/>
   </div>
 </form>
-<table class="table table-striped" [mfData]="questions" #mf="mfDataTable" [mfRowsOnPage]="25">
+<table class="table table-striped" [mfData]="questions" #mf="mfDataTable" [mfRowsOnPage]="10" [mfSortBy]="intitule">
   <thead>
   <tr>
     <th style="width: 40%">

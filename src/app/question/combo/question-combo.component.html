@@ -1,3 +1,3 @@
-<select name="questions" class="form-control" [(ngModel)]="questionSelected">
-  <option *ngFor="let question of questions" [value]="question.id">{{question.intitule}}</option>
+<select name="questions" class="form-control" (click)="addList()"  [(ngModel)]="questionSelected">
+  <option *ngFor="let question of questions"  [value]="question.id">{{question.intitule}}</option>
 </select>

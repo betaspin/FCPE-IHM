@@ -5,6 +5,7 @@ import {HttpModule} from '@angular/http';
 import {RouterModule, Routes} from '@angular/router';
 import {DataTableModule} from 'angular2-datatable';
 import {FilterByPipe} from './filters/filter.pipe';
+// Import pour les modals
 import {Ng2Bs3ModalModule} from 'ng2-bs3-modal/ng2-bs3-modal';
 
 import {AppComponent} from './app.component';
@@ -28,9 +29,7 @@ import {FormulaireComponent} from './formulaire/list/formulaire.component';
 import {FormulaireService} from './formulaire/list/formulaire.service';
 import {FormulaireAddComponent} from './formulaire/add/formulaire-add.component';
 import {FormulaireAddService} from './formulaire/add/formulaire-add.service';
-
 import {QuestionComboComponent} from './question/combo/question-combo.component';
-
 
 
 const appRoutes: Routes = [
@@ -56,7 +55,6 @@ const appRoutes: Routes = [
     FilterByPipe,
     QuestionComponent,
     QuestionAddComponent,
-    QuestionComboComponent,
     QuestionComboComponent,
     FormulaireAddComponent,
     FormulaireComponent,
