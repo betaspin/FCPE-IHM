@@ -37,14 +37,14 @@ const appRoutes: Routes = [
   {path: '', component: LoginComponent},
   {path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
   {path: 'etablissement/list', component: EtablissementComponent, canActivate: [AuthGuard]},
-  {path: 'etablissement/add', component: EtablissementAddComponent},
-  {path: 'etablissement/edit/:id', component: EtablissementAddComponent},
-  {path: 'question/list', component: QuestionComponent},
-  {path: 'question/add', component: QuestionAddComponent},
-  {path: 'question/edit/:id', component: QuestionAddComponent},
-  {path: 'formulaire/list', component: FormulaireComponent},
-  {path: 'formulaire/add', component: FormulaireAddComponent},
-  {path: 'formulaire/edit/:id', component: FormulaireAddComponent}
+  {path: 'etablissement/add', component: EtablissementAddComponent, canActivate: [AuthGuard]},
+  {path: 'etablissement/edit/:id', component: EtablissementAddComponent, canActivate: [AuthGuard]},
+  {path: 'question/list', component: QuestionComponent, canActivate: [AuthGuard]},
+  {path: 'question/add', component: QuestionAddComponent, canActivate: [AuthGuard]},
+  {path: 'question/edit/:id', component: QuestionAddComponent, canActivate: [AuthGuard]},
+  {path: 'formulaire/list', component: FormulaireComponent, canActivate: [AuthGuard]},
+  {path: 'formulaire/add', component: FormulaireAddComponent, canActivate: [AuthGuard]},
+  {path: 'formulaire/edit/:id', component: FormulaireAddComponent, canActivate: [AuthGuard]}
 ];
 
 @NgModule({
