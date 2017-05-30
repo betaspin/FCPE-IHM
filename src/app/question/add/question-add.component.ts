@@ -13,7 +13,7 @@ export class QuestionAddComponent implements OnInit {
 
   private id: number;
   private sub: any;
-  private title: string;
+  public title: string;
   private action: string;
   private typesQuestion = [
     { label: 'Case à cocher', value: 'checkbox' },
