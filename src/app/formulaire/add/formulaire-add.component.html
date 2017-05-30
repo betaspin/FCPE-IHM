@@ -19,58 +19,18 @@
         <legend>Metadata</legend>
 
         <table >
-
           <tr>
-            <td>Niveau</td>
-            <td>Serie</td>
             <td>Etat</td>
-            <td>classe</td>
           </tr>
-
           <tr>
-            <td>
-              <div>
-                <select id="niveau" name="niveau"  [(ngModel)]="formulaireInfo.niveau">
-                  <option value="0">Tle</option>
-                  <option value="1">1ere</option>
-                  <option value="2">2nd</option>
-                  <option value="3">3eme</option>
-                  <option value="4">4eme</option>
-                  <option value="5">5ere</option>
-                  <option value="6">6eme</option>
-                </select>
-              </div>
-            </td>
-            <td>
-              <div>
-                <select id="serie" name="serie"  [(ngModel)]="formulaireInfo.serie">
-                  <option value="S">S</option>
-                  <option value="ES">ES</option>
-                  <option value="L">L</option>
-                  <option value="Tech">Technologie</option>
-                </select>
-              </div>
-            </td>
             <td>
               <div>
                 <select id="etat" name="etat"  [(ngModel)]="formulaireInfo.etat">
-                  <option value="TRUE">actif</option>
-                  <option value="FALSE">inactif</option>
+                  <option value="actif">actif</option>
+                  <option value="inactif">inactif</option>
                 </select>
               </div>
             </td>
-
-            <td>
-              <div >
-                <select id="classe" name="classe" [(ngModel)]="formulaireInfo.classe">
-                  <option value="classe1">A</option>
-                  <option value="classe2">B</option>
-                  <option value="classe3">C</option>
-                  <option value="classe4">D</option>
-                </select>
-              </div>
-            </td>
-
           </tr>
         </table>
       </fieldset>
@@ -81,15 +41,17 @@
         <label for="Nom">Nom</label>
         <input type="text" class="form-control" id="nom" name="nom" [(ngModel)]="formulaireInfo.nom" placeholder="Titre du formulaire">
       </div>
-
+    <div class="col-lg-12 form-group">
       <fieldset>
         <legend>Banque de questions</legend>
+ <!--
         <app-question-combo></app-question-combo>
         {{ comboQuestion.listQuestionSelected}}
+  -->
         <app-question>   </app-question>
       </fieldset>
 
-
+    </div>
 
 
 <modal #modal>

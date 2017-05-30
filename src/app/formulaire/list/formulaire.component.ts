@@ -20,9 +20,7 @@ export class FormulaireComponent implements OnInit {
     id: '',
     nom: '',
     statut: '',
-    etat: '',
-    serie: '',
-    niveau: ''
+    etat: ''
 
   };
 
@@ -35,6 +33,7 @@ export class FormulaireComponent implements OnInit {
 
   ngOnInit() {
     this.formulaireService.getFormulaires().subscribe((formulaires) => {
+
       this.formulaires = formulaires;
     });
   }

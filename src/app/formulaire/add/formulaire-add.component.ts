@@ -44,10 +44,7 @@ export class FormulaireAddComponent implements OnInit {
     id: NaN,
     nom: '',
     statut: '',
-    etat: '',
-    serie: '',
-    niveau: '',
-    classe: ''
+    etat: ''
   };
 
   constructor(private formulaireAddService: FormulaireAddService, private router: Router, private route: ActivatedRoute) { }
@@ -68,14 +65,14 @@ export class FormulaireAddComponent implements OnInit {
         this.action = 'edit';
 
         this.formulaireInfo.id = this.id;
-        this.formulaireInfo.nom = 'monFormulaire perso';
-        this.formulaireInfo.serie = 'L';
-        this.formulaireInfo.classe = 'classe2';
-        this.formulaireInfo.niveau = '3';
-        this.formulaireInfo.etat = 'TRUE';
 
         // Récupération du formulaire
         this.formulaireAddService.getFormulaire(this.id).subscribe((formulaire) => {
+         if (formulaire.etat === 'true') {
+           formulaire.etat = 'actif';
+         }else {
+           formulaire.etat = 'inactif';
+         }
           this.formulaireInfo = formulaire;
         });
       }

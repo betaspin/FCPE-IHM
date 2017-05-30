@@ -25,7 +25,7 @@ export class QuestionComboComponent implements OnInit {
     // this.questionService.getQuestions().subscribe((questions) => {
     //   this.questions = questions;
     // });
-
+/*
     this.questions = [
       {id: 1, intitule: 'Question1', obligatoire: 'oui', statut: 'Générique', tag: ''},
       {id: 2, intitule: 'Question2', obligatoire: 'non', statut: 'Spécifique', tag: ''},
@@ -33,6 +33,7 @@ export class QuestionComboComponent implements OnInit {
       {id: 4, intitule: 'Question4', obligatoire: 'non', statut: 'Générique', tag: ''},
       {id: 5, intitule: 'Question5', obligatoire: 'oui', statut: 'Générique', tag: ''},
     ];
+    */
   }
 
   public addList() {
